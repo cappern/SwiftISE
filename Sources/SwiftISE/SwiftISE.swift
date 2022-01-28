@@ -24,7 +24,11 @@ public class SwiftISE: ObservableObject {
     
     
     
-    func fetchAllGuestUsers() -> Void {
+    public func fetchAllGuestUsers() -> Void {
+        if self.allGuestResources == nil {
+            self.allGuestResources = [Resource]()
+        }
+        
         var components = URLComponents()
         components.scheme = "https"
         components.host = host
