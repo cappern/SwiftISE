@@ -1,16 +1,16 @@
 import Foundation
 @available(iOS 13.0, *)
-public class SwiftISE: ObservableObject {
+public class ISE: ObservableObject {
     
-    public var host: String
-    public var iseVersion = 3.1
+    var host: String
+    var iseVersion = 3.1
     public var ersUser: String
     public var ersPassword: String
     
     public var sponsorUsername: String?
     
     
-    @Published var allGuestResources: [Resource]?
+    @Published var allGuestResources =  [Resource]()
     
     public init(host: String, ersUser: String, ersPassword: String, iseVersion: Int) {
         self.host = host
@@ -25,9 +25,6 @@ public class SwiftISE: ObservableObject {
     
     
     public func fetchAllGuestUsers() -> Void {
-        if self.allGuestResources == nil {
-            self.allGuestResources = [Resource]()
-        }
         
         var components = URLComponents()
         components.scheme = "https"
